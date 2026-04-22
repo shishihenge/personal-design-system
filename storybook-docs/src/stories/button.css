@@ -1,0 +1,56 @@
+:root {
+  --color-primary-500: #1A3F37;
+  --color-neutral-100: #C8FBEE;
+}
+
+.storybook-button {
+  display: inline-flex;  /* Change to flexbox */
+  align-items: center;   /* Center content vertically */
+  justify-content: center;  /* Center horizontally if needed */
+  cursor: pointer;
+  border: 0;
+  border-radius: 3em;
+  font-weight: 700;
+  line-height: 1;
+  font-family: 'Inter', sans-serif;
+}
+.storybook-button--primary {
+  background-color: var(--color-primary-500);
+  color: white;
+}
+.storybook-button--medium {
+  padding: 11px 20px;
+  font-size: 14px;
+  gap: 8px;  /* Add gap for spacing between icon and text */
+}
+.storybook-button--large {
+  padding: 12px 24px;
+  font-size: 16px;
+  gap: 8px;
+}
+.storybook-button--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Text icon (icon left) - tighter gap */
+.storybook-button--text-icon {
+  gap: 8px;  /* Changed from 4px back to 8px */
+}
+
+/* Text icon right (icon on right) */
+.storybook-button--text-icon-right {
+  gap: 8px;
+  /* Remove flex-direction: row-reverse; - JSX already has label then icon */
+}
+
+/* External link and dropdown - icon on right */
+.storybook-button--external-link,
+.storybook-button--dropdown {
+  gap: 8px;
+  /* Remove flex-direction: row-reverse; - JSX already has label then icon */
+}
+
+.storybook-button:hover:not(.storybook-button--disabled) {
+  opacity: 0.8;
+}

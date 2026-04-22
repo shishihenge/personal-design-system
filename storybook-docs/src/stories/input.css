@@ -1,0 +1,165 @@
+:root {
+  /* Existing variables */
+  --color-primary-500: #1A3F37;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+  --color-neutral-100: #F3F4F6;
+  --color-neutral-300: #D1D5DB;
+  --color-neutral-500: #6B7280;
+  --color-neutral-700: #374151;
+  --xxs: 4px;
+  --small: 12px;
+
+  /* New Figma variables */
+  --border-radius-input: 8px;
+  --border-item-width: 2px;
+  --Color-Neutral-base: #373939;
+  --Color-Neutral-50: #F8F8F8;
+  --Color-Neutral-200: #C4CACA;
+  --Color-Semantic-Error: #EF4444;
+  --Color-Semantic-Warning: #F59E0B;
+  --Color-Neutral-100: #EEE;
+
+  --input-icon-size: 16px;
+  --input-font-size: 14px;
+}
+
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* From Figma */
+}
+
+.input-label {
+  font-size: 14px; /* From Figma */
+  font-weight: 500; /* From Figma */
+  color: var(--color-neutral-700); /* From Figma */
+  font-family: 'Inter', sans-serif; /* From Figma */
+}
+
+.input-container {
+  display: flex;
+  min-height: 32px;
+  padding: var(--xxs, 4px) var(--small, 12px) var(--xxs, 4px) 10px; /* Top: 4px, Right: 12px, Bottom: 4px, Left: 10px */
+  flex-direction: column; /* Revert: Back to column for vertical centering */
+  justify-content: center; /* Center content vertically */
+  align-items: flex-start; /* Align to left */
+  position: relative;
+  border: 1px solid var(--color-neutral-300); /* From Figma */
+  border-radius: var(--border-radius-input); /* From Figma */
+  background-color: white; /* From Figma */
+  transition: all 0.2s ease; /* From Figma */
+}
+
+.input-field {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: var(--input-font-size);
+  line-height: 16px; /* match icon size */
+  height: 16px;      /* stabilise vertical position */
+  padding: 0;        /* keep text tight */
+  background: transparent;
+  color: var(--color-neutral-700); /* From Figma */
+}
+
+.input-field::placeholder {
+  color: var(--color-neutral-500); /* From Figma */
+}
+
+/* Left icon variant */
+.input-wrapper--left-icon .input-container {
+  flex-direction: row; /* Horizontal for icon + input */
+  align-items: center; /* Center icon and input vertically */
+}
+
+.input-wrapper--left-icon .input-icon--left {
+  margin-right: 8px; /* From Figma */
+  width: var(--input-icon-size);
+  height: var(--input-icon-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 var(--input-icon-size);
+}
+
+/* Prevent SVG baseline gaps */
+.input-wrapper--left-icon .input-icon--left svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Default state */
+.input-wrapper--default .input-container {
+  border-radius: var(--border-radius-input, 8px);
+  border: var(--border-item-width, 2px) solid var(--Color-Neutral-base, #373939);
+  background: var(--Color-Neutral-50, #F8F8F8);
+}
+
+/* Focus state */
+.input-wrapper--focus .input-container,
+.input-field:focus {
+  border-color: var(--color-primary-500); /* From Figma */
+  background-color: #f0f9ff; /* From Figma */
+}
+
+/* Read-only state */
+.input-wrapper--readonly .input-container {
+  border-radius: var(--border-radius-input, 8px);
+  border: var(--border-item-width, 2px) solid var(--Color-Neutral-200, #C4CACA);
+  background: var(--Color-Neutral-50, #F8F8F8);
+}
+
+.input-wrapper--readonly .input-field {
+  cursor: default;
+  color: var(--color-neutral-500); /* From Figma */
+}
+
+/* Disabled state */
+.input-wrapper--disabled .input-container {
+  border-radius: var(--border-radius-input, 8px);
+  border: var(--border-item-width, 2px) solid var(--Color-Neutral-200, #C4CACA);
+  background: var(--Color-Neutral-100, #EEE);
+}
+
+/* Error state */
+.input-wrapper--error .input-container {
+  border-radius: var(--border-radius-input, 8px);
+  border-top: var(--border-item-width, 2px) solid var(--Color-Semantic-Error, #EF4444);
+  border-right: var(--border-item-width, 2px) solid var(--Color-Semantic-Error, #EF4444);
+  border-bottom: var(--border-item-width, 2px) solid var(--Color-Semantic-Error, #EF4444);
+  border-left: 8px solid var(--Color-Semantic-Error, #EF4444);
+  background: var(--Color-Neutral-50, #F8F8F8);
+}
+
+/* Warning state */
+.input-wrapper--warning .input-container {
+  border-radius: var(--border-radius-input, 8px);
+  border-top: var(--border-item-width, 2px) solid var(--Color-Semantic-Warning, #F59E0B);
+  border-right: var(--border-item-width, 2px) solid var(--Color-Semantic-Warning, #F59E0B);
+  border-bottom: var(--border-item-width, 2px) solid var(--Color-Semantic-Warning, #F59E0B);
+  border-left: 8px solid var(--Color-Semantic-Warning, #F59E0B);
+  background: var(--Color-Neutral-50, #F8F8F8);
+}
+
+/* Error message */
+.input-message--error {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--Color-Semantic-Error, #EF4444);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Warning message */
+.input-message--warning {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--Color-Semantic-Warning, #F59E0B);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Icon */
+.input-wrapper--left-icon .input-icon--left {
+  icon = <Search size={14} />;
+}
